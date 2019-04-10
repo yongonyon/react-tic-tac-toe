@@ -17,8 +17,6 @@ class App extends Component {
   render() {
     return (
       <Game/>
-      // <ShoppingList/>
-      // <Hello name={this.state.name}/>
     );
   }
 }
