@@ -1,13 +1,20 @@
 import React from 'react'
 import Board from './Board'
 
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
 import './TicTacToe.css';
 
 const GameInfo = (props) => (
-  <div className="game-info">
+  <Paper className="game-info">
     <div>{props.status}</div>
-    <ol>{props.moves}</ol>
-  </div>
+    <List>{props.moves}</List>
+  </Paper>
 )
 
 class Game extends React.Component {
@@ -18,7 +25,7 @@ class Game extends React.Component {
         squares: Array(9).fill(null),
       }],
       stepNumber: 0,
-      nextMove: 'O',
+      nextMove: 'X',
     }
   }
 
@@ -60,21 +67,22 @@ class Game extends React.Component {
         `Go to move #${move}` :
         `Go to game start`
       return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
+        <ListItem button onClick={() => this.jumpTo(move)}>
+          {desc}
+        </ListItem>
       )
     })
     let status = winner ? `Winner: ${winner}` : `Next player: ${this.state.nextMove}`
 
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board
+      <div>
+        <Grid container justify="center"
+          alignItems="center" className="game">
+          <Board className="game-board"
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
           />
-        </div>
+        </Grid>
         <GameInfo moves={moves} status={status} />
       </div>
     )

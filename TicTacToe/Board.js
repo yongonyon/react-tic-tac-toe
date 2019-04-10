@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 import Square from './Square'
 
 class Board extends React.Component {
@@ -15,6 +16,7 @@ class Board extends React.Component {
   render() {
     return (
       <div>
+
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
