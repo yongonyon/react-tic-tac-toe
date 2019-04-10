@@ -1,6 +1,8 @@
 import React from 'react'
 import Board from './Board'
 
+import './TicTacToe.css';
+
 const GameInfo = (props) => (
   <div className="game-info">
     <div>{props.status}</div>
